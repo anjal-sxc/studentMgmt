@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TaskTile extends StatelessWidget {
+  final String from;
   final String subject;
   final String task;
   final String dateOfTask;
 
-  TaskTile({this.subject = "", this.task = "", this.dateOfTask = ""});
+  TaskTile({
+    this.subject = "",
+    this.task = "",
+    this.dateOfTask = "",
+    this.from = "",
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,47 +34,47 @@ class TaskTile extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
                   content: Container(
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: <Widget>[
-                          Center(
-                              child: Text(
-                            'task : $task',
-                            style: GoogleFonts.antic(
-                              textStyle: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: <Widget>[
+                                Center(
+                                    child: Text(
+                                  'task : $task',
+                                  style: GoogleFonts.antic(
+                                    textStyle: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20),
+                                  ),
+                                )),
+                                Divider(
+                                  thickness: 1.5,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Center(
+                                  child: Text(
+                                    dateOfTask,
+                                    style: GoogleFonts.antic(
+                                      textStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15),
+                                    ),
+                                  ),
+                                ),
+                                Divider(
+                                  thickness: 1.5,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                              ],
                             ),
-                          )),
-                          Divider(
-                            thickness: 1.5,
                           ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Center(
-                            child: Text(
-                              dateOfTask,
-                              style: GoogleFonts.antic(
-                                textStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15),
-                              ),
-                            ),
-                          ),
-                          Divider(
-                            thickness: 1.5,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                        ),
                 );
               },
             );

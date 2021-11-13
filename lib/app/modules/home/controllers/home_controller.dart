@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:student_mgmt/app/modules/activites_page/bindings/activites_page_binding.dart';
 import 'package:student_mgmt/app/modules/activites_page/views/activites_page_view.dart';
 import 'package:student_mgmt/app/modules/classes_page/bindings/classes_page_binding.dart';
@@ -11,14 +13,12 @@ import 'package:student_mgmt/app/modules/student_details/bindings/student_detail
 import 'package:student_mgmt/app/modules/student_details/views/student_details_view.dart';
 import 'package:student_mgmt/app/modules/teacher_page/bindings/teacher_page_binding.dart';
 import 'package:student_mgmt/app/modules/teacher_page/views/teacher_page_view.dart';
+import 'package:student_mgmt/app/widgets/task_tile.dart';
 
 class HomeController extends GetxController {
+  
   List items = [
-    [
-      'Student Info',
-      "assets/images/student-icon.png",
-      () => Get.to(() => StudentDetailsView(), binding: StudentDetailsBinding())
-    ],
+    ['Student Info', "assets/images/student-icon.png", null],
     [
       'Feedback',
       "assets/images/child-feedback-icon.png",

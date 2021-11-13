@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -115,7 +116,109 @@ class HomeView extends GetView<HomeController> {
                           itemCount: homeController.items.length,
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
-                              onTap: homeController.items[index][2],
+                              onTap: index == 0
+                                  ? () => showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          content: Container(
+                                            height: 250,
+                                            child: SingleChildScrollView(
+                                              child: Column(
+                                                children: <Widget>[
+                                                  Center(
+                                                      child: Text(
+                                                    'Sam Shrestha',
+                                                    style: GoogleFonts.antic(
+                                                      textStyle: TextStyle(
+                                                          color: Colors.black,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20),
+                                                    ),
+                                                  )),
+                                                  Divider(
+                                                    thickness: 1.5,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  Center(
+                                                    child: Text(
+                                                      "Roll no : 016bscit049",
+                                                      style: GoogleFonts.antic(
+                                                        textStyle: TextStyle(
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 15),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Divider(
+                                                    thickness: 1.5,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  Center(
+                                                    child: Text(
+                                                      "Faculty: BSCIT",
+                                                      style: GoogleFonts.antic(
+                                                        textStyle: TextStyle(
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 15),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Divider(
+                                                    thickness: 1.5,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  Center(
+                                                    child: Text(
+                                                      "Address : Bhaktapur",
+                                                      style: GoogleFonts.antic(
+                                                        textStyle: TextStyle(
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 15),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Divider(
+                                                    thickness: 1.5,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  Center(
+                                                    child: Text(
+                                                      "Email : samshrestha@gmail.com",
+                                                      style: GoogleFonts.antic(
+                                                        textStyle: TextStyle(
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 15),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      })
+                                  : homeController.items[index][2],
                               child: Container(
                                 padding: EdgeInsets.only(
                                     top: 12, left: 12, right: 12, bottom: 8),
