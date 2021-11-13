@@ -8,7 +8,7 @@ import '../controllers/complaints_page_controller.dart';
 class ComplaintsPageView extends GetView<ComplaintsPageController> {
   final ComplaintsPageController complaintsPageController =
       Get.put(ComplaintsPageController());
-
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +80,7 @@ class ComplaintsPageView extends GetView<ComplaintsPageController> {
                               ],
                             ),
                             child: Form(
-                              key: complaintsPageController.formKey,
+                              key: _formKey,
                               child: Column(
                                 children: <Widget>[
                                   Container(
@@ -102,6 +102,12 @@ class ComplaintsPageView extends GetView<ComplaintsPageController> {
                                           hintStyle:
                                               TextStyle(color: Colors.grey),
                                           border: InputBorder.none),
+                                      validator: (value) {
+                                        if (value.isEmpty) {
+                                          return "Field cannot be empty";
+                                        } else
+                                          return null;
+                                      },
                                     ),
                                   ),
                                   Container(
@@ -122,6 +128,12 @@ class ComplaintsPageView extends GetView<ComplaintsPageController> {
                                           hintStyle:
                                               TextStyle(color: Colors.grey),
                                           border: InputBorder.none),
+                                      validator: (value) {
+                                        if (value.isEmpty) {
+                                          return "Field cannot be empty";
+                                        } else
+                                          return null;
+                                      },
                                     ),
                                   ),
                                   Container(
@@ -139,6 +151,12 @@ class ComplaintsPageView extends GetView<ComplaintsPageController> {
                                           hintStyle:
                                               TextStyle(color: Colors.grey),
                                           border: InputBorder.none),
+                                      validator: (value) {
+                                        if (value.isEmpty) {
+                                          return "Field cannot be empty";
+                                        } else
+                                          return null;
+                                      },
                                     ),
                                   ),
                                   Container(
@@ -156,6 +174,12 @@ class ComplaintsPageView extends GetView<ComplaintsPageController> {
                                           hintStyle:
                                               TextStyle(color: Colors.grey),
                                           border: InputBorder.none),
+                                      validator: (value) {
+                                        if (value.isEmpty) {
+                                          return "Field cannot be empty";
+                                        } else
+                                          return null;
+                                      },
                                     ),
                                   ),
                                   Container(
@@ -203,7 +227,17 @@ class ComplaintsPageView extends GetView<ComplaintsPageController> {
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                          onPressed: () {}),
+                                          onPressed: () {
+                                            if (_formKey.currentState
+                                                .validate()) {
+                                              Get.back();
+                                              Get.snackbar(
+                                                  "Complaint Submitted",
+                                                  "Complaint submitted successfully.",
+                                                  snackPosition:
+                                                      SnackPosition.TOP);
+                                            }
+                                          }),
                                     ),
                                   ),
                                   SizedBox(
