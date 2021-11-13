@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:student_mgmt/app/widgets/activity_tile.dart';
 
-import '../controllers/activites_page_controller.dart';
+import '../controllers/teacher_page_controller.dart';
 
-class ActivitesPageView extends GetView<ActivitesPageController> {
+class TeacherPageView extends GetView<TeacherPageController> {
+  final TeacherPageController teacherPageController =
+      Get.put(TeacherPageController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +36,7 @@ class ActivitesPageView extends GetView<ActivitesPageController> {
                   ),
                   Center(
                     child: Text(
-                      "Activities",
+                      "Teachers",
                       style: GoogleFonts.antic(
                         textStyle: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
@@ -58,15 +60,15 @@ class ActivitesPageView extends GetView<ActivitesPageController> {
                   builder: (context, snapshots) {
                     if (!snapshots.hasData || snapshots.data.length == 0) {
                       return Center(
-                          child: Text('No Activities Right now',
+                          child: Text('No Teachers Right now',
                               style: GoogleFonts.antic(
                                   fontWeight: FontWeight.bold, fontSize: 30)));
                     }
                     return ListView.builder(
-                      itemCount: snapshots.data.length,
+                      itemCount: teacherPageController.teachers.length,
                       itemBuilder: (context, index) {
                         return ActivityTile(
-                          name: snapshots.data[index]['name'],
+                          name: teacherPageController.teachers[index][0],
                           explanation: snapshots.data[index]['explanation'],
                         );
                       },

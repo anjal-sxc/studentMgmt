@@ -12,6 +12,7 @@ abstract class Routes {
   static const FEEDBACK_PAGE = _Paths.FEEDBACK_PAGE;
   static const COMPLAINTS_PAGE = _Paths.COMPLAINTS_PAGE;
   static const ACTIVITES_PAGE = _Paths.ACTIVITES_PAGE;
+  static const TEACHER_PAGE = _Paths.TEACHER_PAGE;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const FEEDBACK_PAGE = '/feedback-page';
   static const COMPLAINTS_PAGE = '/complaints-page';
   static const ACTIVITES_PAGE = '/activites-page';
+  static const TEACHER_PAGE = '/teacher-page';
 }

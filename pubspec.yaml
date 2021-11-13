@@ -19,7 +19,7 @@ dev_dependencies:
 flutter: 
   uses-material-design: true
 
-asssets:
+assets:
    - assets/images/student-icon.png
    - assets/images/emergency-people-icon.png
    - assets/images/medication-icon.png

@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:student_mgmt/app/modules/activites_page/bindings/activites_page_binding.dart';
+import 'package:student_mgmt/app/modules/activites_page/views/activites_page_view.dart';
+import 'package:student_mgmt/app/modules/complaints_page/bindings/complaints_page_binding.dart';
+import 'package:student_mgmt/app/modules/complaints_page/views/complaints_page_view.dart';
+import 'package:student_mgmt/app/modules/teacher_page/bindings/teacher_page_binding.dart';
+import 'package:student_mgmt/app/modules/teacher_page/views/teacher_page_view.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -157,6 +163,57 @@ class HomeView extends GetView<HomeController> {
                     ),
                   ),
                   SizedBox(height: 16),
+                  Center(
+                    child: MaterialButton(
+                      onPressed: () {
+                        Get.to(
+                          () => ComplaintsPageView(),
+                          binding: ComplaintsPageBinding(),
+                        );
+                      },
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadiusDirectional.circular(22)),
+                      color: Colors.red,
+                      child: Text(
+                        "Complaint Page",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: MaterialButton(
+                      onPressed: () {
+                        Get.to(
+                          () => ActivitesPageView(),
+                          binding: ActivitesPageBinding(),
+                        );
+                      },
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadiusDirectional.circular(22)),
+                      color: Colors.red,
+                      child: Text(
+                        "Activity Page",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: MaterialButton(
+                      onPressed: () {
+                        Get.to(
+                          () => TeacherPageView(),
+                          binding: TeacherPageBinding(),
+                        );
+                      },
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadiusDirectional.circular(22)),
+                      color: Colors.red,
+                      child: Text(
+                        "Teacher Page",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],
