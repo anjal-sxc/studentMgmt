@@ -152,8 +152,6 @@ class HomeView extends GetView<HomeController> {
                   ],
                 ),
               ),
-<<<<<<< HEAD
-=======
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -164,23 +162,7 @@ class HomeView extends GetView<HomeController> {
                         top: 28),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              height: 75,
-                              width: 55,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/logo_slogan.png'),
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                      children: [],
                     ),
                   ),
                   SizedBox(height: 16),
@@ -237,7 +219,6 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ],
               ),
->>>>>>> 158f07772430768aae0e51e1dc89cc52c912a87b
             ],
           )
         ],

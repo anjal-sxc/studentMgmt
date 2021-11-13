@@ -19,7 +19,6 @@ dev_dependencies:
 flutter: 
   uses-material-design: true
 
-<<<<<<< HEAD
   assets:
     - assets/images/student-icon.png
     - assets/images/emergency-people-icon.png
@@ -34,19 +33,4 @@ flutter:
     - assets/images/complaint-icon.png
     - assets/images/logout-icon.png
     - assets/images/teacher-icon.png
-=======
-assets:
-   - assets/images/student-icon.png
-   - assets/images/emergency-people-icon.png
-   - assets/images/medication-icon.png
-   - assets/images/activites-icon.png
-   - assets/images/time-table-icon.png
-   - assets/images/fees-icon.png
-   - assets/images/child-feedback-icon.png
-   - assets/images/time-table-icon.png
-   - assets/images/tasks-icon.png
-   - assets/images/class-icon.png
-   - assets/images/complaint-icon.png
-   - assets/images/logout-icon.png
->>>>>>> 158f07772430768aae0e51e1dc89cc52c912a87b
 
