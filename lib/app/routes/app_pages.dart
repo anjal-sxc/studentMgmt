@@ -12,6 +12,8 @@ import 'package:student_mgmt/app/modules/student_details/bindings/student_detail
 import 'package:student_mgmt/app/modules/student_details/views/student_details_view.dart';
 import 'package:student_mgmt/app/modules/student_info/bindings/student_info_binding.dart';
 import 'package:student_mgmt/app/modules/student_info/views/student_info_view.dart';
+import 'package:student_mgmt/app/modules/task_page/bindings/task_page_binding.dart';
+import 'package:student_mgmt/app/modules/task_page/views/task_page_view.dart';
 import 'package:student_mgmt/app/modules/teacher_page/bindings/teacher_page_binding.dart';
 import 'package:student_mgmt/app/modules/teacher_page/views/teacher_page_view.dart';
 
@@ -57,6 +59,11 @@ class AppPages {
       name: _Paths.TEACHER_PAGE,
       page: () => TeacherPageView(),
       binding: TeacherPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.TASK_PAGE,
+      page: () => TaskPageView(),
+      binding: TaskPageBinding(),
     ),
   ];
 }
