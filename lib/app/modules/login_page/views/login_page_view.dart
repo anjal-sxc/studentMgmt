@@ -9,8 +9,8 @@ import '../controllers/login_page_controller.dart';
 
 class LoginPageView extends GetView<LoginPageController> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController user = new TextEditingController();
-  TextEditingController pass = new TextEditingController();
+  final LoginPageController loginPageController =
+      Get.put(LoginPageController());
 
   int selectedRadio = 1;
 
@@ -21,6 +21,7 @@ class LoginPageView extends GetView<LoginPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).requestFocus(new FocusNode());
@@ -90,18 +91,18 @@ class LoginPageView extends GetView<LoginPageController> {
                           SizedBox(
                             height: 60,
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Color.fromRGBO(225, 95, 27, .3),
-                                      blurRadius: 20,
-                                      offset: Offset(0, 10))
-                                ]),
-                            child: Form(
-                              key: _formKey,
+                          Form(
+                            key: _formKey,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Color.fromRGBO(225, 95, 27, .3),
+                                        blurRadius: 20,
+                                        offset: Offset(0, 10))
+                                  ]),
                               child: Column(
                                 children: <Widget>[
                                   Container(
@@ -115,13 +116,20 @@ class LoginPageView extends GetView<LoginPageController> {
                                       ),
                                     ),
                                     child: TextFormField(
-                                      controller: user,
+                                      controller: loginPageController
+                                          .usernameController,
                                       decoration: InputDecoration(
                                           hintText: "Username",
                                           hintStyle:
                                               TextStyle(color: Colors.grey),
                                           border: InputBorder.none),
                                       keyboardType: TextInputType.text,
+                                      validator: (value) {
+                                        if (value.isEmpty) {
+                                          return "Field cannot be empty";
+                                        } else
+                                          return null;
+                                      },
                                     ),
                                   ),
                                   Container(
@@ -133,7 +141,8 @@ class LoginPageView extends GetView<LoginPageController> {
                                       color: Color(0xfff2f2f2),
                                     ))),
                                     child: TextFormField(
-                                      controller: pass,
+                                      controller: loginPageController
+                                          .passwordController,
                                       obscureText: true,
                                       decoration: InputDecoration(
                                           hintText: "Password",
@@ -142,6 +151,12 @@ class LoginPageView extends GetView<LoginPageController> {
                                           border: InputBorder.none),
                                       keyboardType:
                                           TextInputType.visiblePassword,
+                                      validator: (value) {
+                                        if (value.isEmpty) {
+                                          return "Field cannot be empty";
+                                        } else
+                                          return null;
+                                      },
                                     ),
                                   ),
                                   // Row(
@@ -202,10 +217,26 @@ class LoginPageView extends GetView<LoginPageController> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 onPressed: () {
-                                  Get.to(
-                                    () => HomeView(),
-                                    binding: HomeBinding(),
-                                  );
+                                  if (_formKey.currentState.validate()) {
+                                    if (loginPageController
+                                                .usernameController.text ==
+                                            "parent49" &&
+                                        loginPageController
+                                                .passwordController.text ==
+                                            "password") {
+                                      Get.off(
+                                        () => HomeView(),
+                                        binding: HomeBinding(),
+                                      );
+                                      loginPageController.passwordController
+                                          .clear();
+                                      loginPageController.usernameController
+                                          .clear();
+                                    } else
+                                      Get.snackbar("Invalid authentication",
+                                          "Username or password maybe incorrect.",
+                                          snackPosition: SnackPosition.TOP);
+                                  }
                                 },
                               ),
                             ),
