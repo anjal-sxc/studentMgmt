@@ -3,12 +3,28 @@ import 'package:get/get.dart';
 class ActivitesPageController extends GetxController {
   List items = [
     [
-      "BIM",
-      "Good Student",
+      "Basketball",
+      "Sunday",
     ],
     [
-      "BSW",
-      "Good Student",
+      "Table Tennis",
+      "Monday",
+    ],
+    [
+      "Basketball",
+      "Tuesday",
+    ],
+    [
+      "Football",
+      "Wednesday",
+    ],
+    [
+      "Cricket",
+      "Thursday",
+    ],
+    [
+      "Batminton",
+      "Friday",
     ],
   ];
   final count = 0.obs;
