@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
+  final HomeController homeController = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     double itemHeight;
@@ -34,13 +35,32 @@ class HomeView extends GetView<HomeController> {
                 width: size.width,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                      begin: FractionalOffset.topCenter,
-                      end: FractionalOffset.bottomCenter,
-                      stops: [0, 1],
-                      colors: []),
+                    begin: Alignment.topCenter,
+                    colors: [
+                      Color.fromRGBO(156, 233, 178, 1),
+                      Color.fromRGBO(173, 187, 238, 1),
+                    ],
+                  ),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(24),
                     bottomRight: Radius.circular(24),
+                  ),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.only(top: Get.height * 0.075),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      text('Mr. parent49'),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      text("Address: test"),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      text('Phone Number: 9898989898')
+                    ],
                   ),
                 ),
               ),
@@ -70,7 +90,7 @@ class HomeView extends GetView<HomeController> {
                         ),
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: 6,
+                        itemCount: homeController.items.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
                             padding: EdgeInsets.only(
@@ -100,18 +120,17 @@ class HomeView extends GetView<HomeController> {
                                       height: 10,
                                     ),
                                     Container(
-                                      height: 65,
-                                      width: 80,
-                                      child: Icon(
-                                        Icons.person,
-                                        size: 60,
-                                      ),
-                                    ),
+                                        height: 65,
+                                        width: 80,
+                                        child: Image(
+                                          image: AssetImage(
+                                              homeController.items[index][1]),
+                                        )),
                                     SizedBox(
                                       height: 10,
                                     ),
                                     Text(
-                                      "Student",
+                                      homeController.items[index][0],
                                       style:
                                           TextStyle(fontSize: 14, height: 1.2),
                                       maxLines: 2,
@@ -127,42 +146,17 @@ class HomeView extends GetView<HomeController> {
                   ],
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: Get.width * 0.05,
-                        right: Get.width * 0.05,
-                        top: 28),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              height: 75,
-                              width: 55,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/logo_slogan.png'),
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                ],
-              ),
             ],
           )
         ],
       ),
     );
   }
+}
+
+Widget text(String text) {
+  return Text(
+    text,
+    style: TextStyle(color: Colors.white, fontSize: 22),
+  );
 }
