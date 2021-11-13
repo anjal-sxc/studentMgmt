@@ -101,7 +101,7 @@ class LoginPageView extends GetView<LoginPageController> {
                                       offset: Offset(0, 10))
                                 ]),
                             child: Form(
-                              // key: _formKey,
+                              key: _formKey,
                               child: Column(
                                 children: <Widget>[
                                   Container(
