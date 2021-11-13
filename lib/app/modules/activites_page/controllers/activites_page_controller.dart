@@ -1,8 +1,16 @@
 import 'package:get/get.dart';
 
 class ActivitesPageController extends GetxController {
-  //TODO: Implement ActivitesPageController
-
+  List items = [
+    [
+      "BIM",
+      "Good Student",
+    ],
+    [
+      "BSW",
+      "Good Student",
+    ],
+  ];
   final count = 0.obs;
   @override
   void onInit() {

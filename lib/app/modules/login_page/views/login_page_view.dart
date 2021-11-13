@@ -209,7 +209,7 @@ class LoginPageView extends GetView<LoginPageController> {
                                 borderRadius: BorderRadius.circular(50),
                                 color: Color.fromRGBO(154, 233, 178, 1)),
                             child: Center(
-                              child: FlatButton(
+                              child: MaterialButton(
                                 child: Text(
                                   "Login",
                                   style: TextStyle(

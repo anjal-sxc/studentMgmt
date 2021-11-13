@@ -1,19 +1,31 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:student_mgmt/app/modules/activites_page/bindings/activites_page_binding.dart';
-import 'package:student_mgmt/app/modules/activites_page/views/activites_page_view.dart';
-import 'package:student_mgmt/app/modules/complaints_page/bindings/complaints_page_binding.dart';
-import 'package:student_mgmt/app/modules/complaints_page/views/complaints_page_view.dart';
-import 'package:student_mgmt/app/modules/teacher_page/bindings/teacher_page_binding.dart';
-import 'package:student_mgmt/app/modules/teacher_page/views/teacher_page_view.dart';
-
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   final HomeController homeController = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
+    Future<bool> _onWillPop() {
+      return showDialog(
+            context: context,
+            builder: (context) => new AlertDialog(
+              content: new Text('Are you sure you want to exit?'),
+              actions: <Widget>[
+                new TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: new Text('No'),
+                ),
+                new TextButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: new Text('Yes'),
+                ),
+              ],
+            ),
+          ) ??
+          false;
+    }
+
     double itemHeight;
     var size = MediaQuery.of(context).size;
     print("height: " + size.height.toString());
@@ -30,135 +42,141 @@ class HomeView extends GetView<HomeController> {
     }
 
     final double itemWidth = size.width / 2;
-    return Scaffold(
-      backgroundColor: Color(0xfff2f2f2),
-      body: ListView(
-        children: [
-          Stack(
-            children: [
-              Container(
-                height: size.height * 0.35,
-                width: size.width,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    colors: [
-                      Color.fromRGBO(156, 233, 178, 1),
-                      Color.fromRGBO(173, 187, 238, 1),
-                    ],
-                  ),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(24),
-                    bottomRight: Radius.circular(24),
-                  ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(top: Get.height * 0.075),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      text('Mr. parent49'),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      text("Address: test"),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      text('Phone Number: 9898989898')
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 200),
-                padding: EdgeInsets.only(top: 12, left: 24, right: 24),
-                decoration: BoxDecoration(
-                    color: Color(0xfff2f2f2),
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 2,
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        backgroundColor: Color(0xfff2f2f2),
+        body: ListView(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: size.height * 0.35,
+                  width: size.width,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      colors: [
+                        Color.fromRGBO(156, 233, 178, 1),
+                        Color.fromRGBO(173, 187, 238, 1),
+                      ],
                     ),
-                    GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: MediaQuery.of(context).orientation ==
-                                  Orientation.landscape
-                              ? 3
-                              : 2,
-                          crossAxisSpacing: 5,
-                          mainAxisSpacing: 5,
-                          childAspectRatio: (itemWidth / itemHeight),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(24),
+                      bottomRight: Radius.circular(24),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.only(top: Get.height * 0.075),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        text('Mr. parent49'),
+                        SizedBox(
+                          height: 8,
                         ),
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: homeController.items.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return GestureDetector(
-                            onTap: homeController.items[index][2],
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                  top: 12, left: 12, right: 12, bottom: 8),
-                              margin: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: Color(0xfff2f2f2),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 8,
-                                    color: Colors.grey.withOpacity(0.3),
-                                    spreadRadius: 1,
-                                    offset: Offset(1, 4),
-                                  )
-                                ],
-                              ),
-                              width: 140,
-                              child: Column(
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Container(
-                                          height: 65,
-                                          width: 80,
-                                          child: Image(
-                                            image: AssetImage(
-                                                homeController.items[index][1]),
-                                          )),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        homeController.items[index][0],
-                                        style: TextStyle(
-                                            fontSize: 14, height: 1.2),
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        }),
-                  ],
+                        text("Address: test"),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        text('Phone Number: 9898989898')
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          )
-        ],
+                Container(
+                  margin: EdgeInsets.only(top: 200),
+                  padding: EdgeInsets.only(top: 12, left: 24, right: 24),
+                  decoration: BoxDecoration(
+                      color: Color(0xfff2f2f2),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30))),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 2,
+                      ),
+                      GridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount:
+                                MediaQuery.of(context).orientation ==
+                                        Orientation.landscape
+                                    ? 3
+                                    : 2,
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 5,
+                            childAspectRatio: (itemWidth / itemHeight),
+                          ),
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: homeController.items.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return GestureDetector(
+                              onTap: homeController.items[index][2],
+                              child: Container(
+                                padding: EdgeInsets.only(
+                                    top: 12, left: 12, right: 12, bottom: 8),
+                                margin: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: Color(0xfff2f2f2),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 8,
+                                      color: Colors.grey.withOpacity(0.3),
+                                      spreadRadius: 1,
+                                      offset: Offset(1, 4),
+                                    )
+                                  ],
+                                ),
+                                width: 140,
+                                child: Column(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Container(
+                                            height: 65,
+                                            width: 80,
+                                            child: Image(
+                                              image: AssetImage(homeController
+                                                  .items[index][1]),
+                                            )),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text(
+                                          homeController.items[index][0],
+                                          style: TextStyle(
+                                              fontSize: 14, height: 1.2),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }),
+                    ],
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

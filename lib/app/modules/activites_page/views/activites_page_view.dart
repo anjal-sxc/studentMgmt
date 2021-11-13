@@ -7,6 +7,8 @@ import 'package:student_mgmt/app/widgets/activity_tile.dart';
 import '../controllers/activites_page_controller.dart';
 
 class ActivitesPageView extends GetView<ActivitesPageController> {
+  final ActivitesPageController activitesPageController =
+      Get.put(ActivitesPageController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,23 +55,13 @@ class ActivitesPageView extends GetView<ActivitesPageController> {
                     borderRadius:
                         BorderRadius.only(topRight: Radius.circular(100))),
                 padding: EdgeInsets.all(20),
-                child: FutureBuilder(
-                  // future: activities,
-                  builder: (context, snapshots) {
-                    if (!snapshots.hasData || snapshots.data.length == 0) {
-                      return Center(
-                          child: Text('No Activities Right now',
-                              style: GoogleFonts.antic(
-                                  fontWeight: FontWeight.bold, fontSize: 30)));
-                    }
-                    return ListView.builder(
-                      itemCount: snapshots.data.length,
-                      itemBuilder: (context, index) {
-                        return ActivityTile(
-                          name: snapshots.data[index]['name'],
-                          explanation: snapshots.data[index]['explanation'],
-                        );
-                      },
+                child: ListView.builder(
+                  itemCount: activitesPageController.items.length,
+                  itemBuilder: (context, index) {
+                    return ActivityTile(
+                      from: "0",
+                      name: activitesPageController.items[index][0],
+                      explanation: activitesPageController.items[index][1],
                     );
                   },
                 ),

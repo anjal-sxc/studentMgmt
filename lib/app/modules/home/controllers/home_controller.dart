@@ -7,8 +7,8 @@ import 'package:student_mgmt/app/modules/complaints_page/bindings/complaints_pag
 import 'package:student_mgmt/app/modules/complaints_page/views/complaints_page_view.dart';
 import 'package:student_mgmt/app/modules/feedback_page/bindings/feedback_page_binding.dart';
 import 'package:student_mgmt/app/modules/feedback_page/views/feedback_page_view.dart';
-import 'package:student_mgmt/app/modules/student_info/bindings/student_info_binding.dart';
-import 'package:student_mgmt/app/modules/student_info/views/student_info_view.dart';
+import 'package:student_mgmt/app/modules/student_details/bindings/student_details_binding.dart';
+import 'package:student_mgmt/app/modules/student_details/views/student_details_view.dart';
 import 'package:student_mgmt/app/modules/teacher_page/bindings/teacher_page_binding.dart';
 import 'package:student_mgmt/app/modules/teacher_page/views/teacher_page_view.dart';
 
@@ -17,7 +17,7 @@ class HomeController extends GetxController {
     [
       'Student Info',
       "assets/images/student-icon.png",
-      () => Get.to(() => StudentInfoView(), binding: StudentInfoBinding())
+      () => Get.to(() => StudentDetailsView(), binding: StudentDetailsBinding())
     ],
     [
       'Feedback',
