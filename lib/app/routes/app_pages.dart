@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import 'package:student_mgmt/app/modules/activites_page/bindings/activites_page_binding.dart';
 import 'package:student_mgmt/app/modules/activites_page/views/activites_page_view.dart';
 import 'package:student_mgmt/app/modules/classes_page/bindings/classes_page_binding.dart';

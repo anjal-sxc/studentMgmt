@@ -11,6 +11,7 @@ class LoginPageView extends GetView<LoginPageController> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final LoginPageController loginPageController =
       Get.put(LoginPageController());
+  
 
   int selectedRadio = 1;
 

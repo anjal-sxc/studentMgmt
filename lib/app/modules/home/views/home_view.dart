@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:student_mgmt/app/modules/login_page/views/login_page_view.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -18,6 +19,26 @@ class HomeView extends GetView<HomeController> {
                 ),
                 new TextButton(
                   onPressed: () => Navigator.of(context).pop(true),
+                  child: new Text('Yes'),
+                ),
+              ],
+            ),
+          ) ??
+          false;
+    }
+
+    Future<bool> _onLogout() {
+      return showDialog(
+            context: context,
+            builder: (context) => new AlertDialog(
+              content: new Text('Are you sure you want to logout?'),
+              actions: <Widget>[
+                new TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: new Text('No'),
+                ),
+                new TextButton(
+                  onPressed: () => Get.offAll(() => LoginPageView()),
                   child: new Text('Yes'),
                 ),
               ],
@@ -173,6 +194,12 @@ class HomeView extends GetView<HomeController> {
                     ],
                   ),
                 ),
+                Positioned(
+                    top: 16,
+                    right: 10,
+                    child: GestureDetector(
+                        onTap: _onLogout,
+                        child: Icon(Icons.logout, color: Colors.white)))
               ],
             )
           ],
