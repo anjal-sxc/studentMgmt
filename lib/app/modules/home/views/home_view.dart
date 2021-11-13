@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:student_mgmt/app/modules/activites_page/bindings/activites_page_binding.dart';
+import 'package:student_mgmt/app/modules/activites_page/views/activites_page_view.dart';
+import 'package:student_mgmt/app/modules/complaints_page/bindings/complaints_page_binding.dart';
+import 'package:student_mgmt/app/modules/complaints_page/views/complaints_page_view.dart';
+import 'package:student_mgmt/app/modules/teacher_page/bindings/teacher_page_binding.dart';
+import 'package:student_mgmt/app/modules/teacher_page/views/teacher_page_view.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -146,6 +152,92 @@ class HomeView extends GetView<HomeController> {
                   ],
                 ),
               ),
+<<<<<<< HEAD
+=======
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: Get.width * 0.05,
+                        right: Get.width * 0.05,
+                        top: 28),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              height: 75,
+                              width: 55,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/logo_slogan.png'),
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  Center(
+                    child: MaterialButton(
+                      onPressed: () {
+                        Get.to(
+                          () => ComplaintsPageView(),
+                          binding: ComplaintsPageBinding(),
+                        );
+                      },
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadiusDirectional.circular(22)),
+                      color: Colors.red,
+                      child: Text(
+                        "Complaint Page",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: MaterialButton(
+                      onPressed: () {
+                        Get.to(
+                          () => ActivitesPageView(),
+                          binding: ActivitesPageBinding(),
+                        );
+                      },
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadiusDirectional.circular(22)),
+                      color: Colors.red,
+                      child: Text(
+                        "Activity Page",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: MaterialButton(
+                      onPressed: () {
+                        Get.to(
+                          () => TeacherPageView(),
+                          binding: TeacherPageBinding(),
+                        );
+                      },
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadiusDirectional.circular(22)),
+                      color: Colors.red,
+                      child: Text(
+                        "Teacher Page",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+>>>>>>> 158f07772430768aae0e51e1dc89cc52c912a87b
             ],
           )
         ],
