@@ -6,6 +6,7 @@ environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dependencies: 
+  google_fonts: 
   cupertino_icons: ^1.0.2
   get: 4.3.8
   flutter: 
@@ -17,4 +18,18 @@ dev_dependencies:
 
 flutter: 
   uses-material-design: true
+
+asssets:
+   - assets/images/student-icon.png
+   - assets/images/emergency-people-icon.png
+   - assets/images/medication-icon.png
+   - assets/images/activites-icon.png
+   - assets/images/time-table-icon.png
+   - assets/images/fees-icon.png
+   - assets/images/child-feedback-icon.png
+   - assets/images/time-table-icon.png
+   - assets/images/tasks-icon.png
+   - assets/images/class-icon.png
+   - assets/images/complaint-icon.png
+   - assets/images/logout-icon.png
 
