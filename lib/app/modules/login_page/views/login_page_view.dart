@@ -115,7 +115,7 @@ class LoginPageView extends GetView<LoginPageController> {
                                       ),
                                     ),
                                     child: TextFormField(
-                                      // controller: user,
+                                      controller: user,
                                       decoration: InputDecoration(
                                           hintText: "Username",
                                           hintStyle:
@@ -133,7 +133,7 @@ class LoginPageView extends GetView<LoginPageController> {
                                       color: Color(0xfff2f2f2),
                                     ))),
                                     child: TextFormField(
-                                      // controller: pass,
+                                      controller: pass,
                                       obscureText: true,
                                       decoration: InputDecoration(
                                           hintText: "Password",

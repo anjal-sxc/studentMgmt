@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class LoginPageController extends GetxController {
-  //TODO: Implement LoginPageController
+
+  // final TextEditingController 
 
   final count = 0.obs;
   @override

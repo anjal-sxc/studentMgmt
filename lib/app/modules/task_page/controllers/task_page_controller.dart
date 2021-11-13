@@ -1,12 +1,7 @@
 import 'package:get/get.dart';
 
-class FeedbackPageController extends GetxController {
-  //TODO: Implement FeedbackPageController
-  List items = [
-    ["a","b","B","c"],
-    ["v","C","S","A"]
-
-  ];
+class TaskPageController extends GetxController {
+  //TODO: Implement TaskPageController
 
   final count = 0.obs;
   @override

@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import 'package:student_mgmt/app/modules/activites_page/bindings/activites_page_binding.dart';
 import 'package:student_mgmt/app/modules/activites_page/views/activites_page_view.dart';
+import 'package:student_mgmt/app/modules/classes_page/bindings/classes_page_binding.dart';
+import 'package:student_mgmt/app/modules/classes_page/views/classes_page_view.dart';
 import 'package:student_mgmt/app/modules/complaints_page/bindings/complaints_page_binding.dart';
 import 'package:student_mgmt/app/modules/complaints_page/views/complaints_page_view.dart';
 import 'package:student_mgmt/app/modules/home/bindings/home_binding.dart';
@@ -12,6 +14,8 @@ import 'package:student_mgmt/app/modules/student_details/bindings/student_detail
 import 'package:student_mgmt/app/modules/student_details/views/student_details_view.dart';
 import 'package:student_mgmt/app/modules/student_info/bindings/student_info_binding.dart';
 import 'package:student_mgmt/app/modules/student_info/views/student_info_view.dart';
+import 'package:student_mgmt/app/modules/task_page/bindings/task_page_binding.dart';
+import 'package:student_mgmt/app/modules/task_page/views/task_page_view.dart';
 import 'package:student_mgmt/app/modules/teacher_page/bindings/teacher_page_binding.dart';
 import 'package:student_mgmt/app/modules/teacher_page/views/teacher_page_view.dart';
 
@@ -57,6 +61,16 @@ class AppPages {
       name: _Paths.TEACHER_PAGE,
       page: () => TeacherPageView(),
       binding: TeacherPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.TASK_PAGE,
+      page: () => TaskPageView(),
+      binding: TaskPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.CLASSES_PAGE,
+      page: () => ClassesPageView(),
+      binding: ClassesPageBinding(),
     ),
   ];
 }

@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:student_mgmt/app/widgets/feedback_tile.dart';
+import 'package:student_mgmt/app/widgets/task_tile.dart';
 
-import '../controllers/feedback_page_controller.dart';
+import '../controllers/task_page_controller.dart';
 
-class FeedbackPageView extends GetView<FeedbackPageController> {
-  final FeedbackPageController feedbackPageController =
-      Get.put(FeedbackPageController());
+class TaskPageView extends GetView<TaskPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +34,7 @@ class FeedbackPageView extends GetView<FeedbackPageController> {
                   ),
                   Center(
                     child: Text(
-                      "Feedbacks",
+                      "Tasks",
                       style: GoogleFonts.antic(
                         textStyle: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
@@ -55,14 +53,23 @@ class FeedbackPageView extends GetView<FeedbackPageController> {
                     borderRadius:
                         BorderRadius.only(topRight: Radius.circular(100))),
                 padding: EdgeInsets.all(20),
-                child: ListView.builder(
-                  itemCount: feedbackPageController.items.length,
-                  itemBuilder: (context, index) {
-                    return FeedbackTile(
-                      subject: feedbackPageController.items[index][0],
-                      feedback: feedbackPageController.items[index][1],
-                      teacherName: feedbackPageController.items[index][2],
-                      dateOfFeedback: feedbackPageController.items[index][3],
+                child: FutureBuilder(
+                  // future: groups,
+                  builder: (context, snapshots) {
+                    if (!snapshots.hasData || snapshots.data.length == 0) {
+                      return Center(
+                          child: Text('No Tasks Right now',
+                              style: GoogleFonts.antic(
+                                  fontWeight: FontWeight.bold, fontSize: 30)));
+                    }
+                    return ListView.builder(
+                      itemCount: snapshots.data.length,
+                      itemBuilder: (context, index) {
+                        return TaskTile(
+                            subject: snapshots.data[index]['subject'],
+                            task: snapshots.data[index]['task'],
+                            dateOfTask: snapshots.data[index]['date_of_task']);
+                      },
                     );
                   },
                 ),
