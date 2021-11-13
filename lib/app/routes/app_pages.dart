@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import 'package:student_mgmt/app/modules/activites_page/bindings/activites_page_binding.dart';
 import 'package:student_mgmt/app/modules/activites_page/views/activites_page_view.dart';
+import 'package:student_mgmt/app/modules/classes_page/bindings/classes_page_binding.dart';
+import 'package:student_mgmt/app/modules/classes_page/views/classes_page_view.dart';
 import 'package:student_mgmt/app/modules/complaints_page/bindings/complaints_page_binding.dart';
 import 'package:student_mgmt/app/modules/complaints_page/views/complaints_page_view.dart';
 import 'package:student_mgmt/app/modules/home/bindings/home_binding.dart';
@@ -64,6 +66,11 @@ class AppPages {
       name: _Paths.TASK_PAGE,
       page: () => TaskPageView(),
       binding: TaskPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.CLASSES_PAGE,
+      page: () => ClassesPageView(),
+      binding: ClassesPageBinding(),
     ),
   ];
 }

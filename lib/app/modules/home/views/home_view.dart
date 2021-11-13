@@ -85,70 +85,69 @@ class HomeView extends GetView<HomeController> {
                       height: 2,
                     ),
                     GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: MediaQuery.of(context).orientation ==
-                                  Orientation.landscape
-                              ? 3
-                              : 2,
-                          crossAxisSpacing: 5,
-                          mainAxisSpacing: 5,
-                          childAspectRatio: (itemWidth / itemHeight),
-                        ),
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: homeController.items.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            padding: EdgeInsets.only(
-                                top: 12, left: 12, right: 12, bottom: 8),
-                            margin: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: Color(0xfff2f2f2),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 8,
-                                  color: Colors.grey.withOpacity(0.3),
-                                  spreadRadius: 1,
-                                  offset: Offset(1, 4),
-                                )
-                              ],
-                            ),
-                            width: 140,
-                            child: Column(
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                        height: 65,
-                                        width: 80,
-                                        child: Image(
-                                          image: AssetImage(
-                                              homeController.items[index][1]),
-                                        )),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      homeController.items[index][0],
-                                      style:
-                                          TextStyle(fontSize: 14, height: 1.2),
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          );
-                        }),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: MediaQuery.of(context).orientation ==
+                                Orientation.landscape
+                            ? 3
+                            : 2,
+                        crossAxisSpacing: 5,
+                        mainAxisSpacing: 5,
+                        childAspectRatio: (itemWidth / itemHeight),
+                      ),
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: homeController.items.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          padding: EdgeInsets.only(
+                              top: 12, left: 12, right: 12, bottom: 8),
+                          margin: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Color(0xfff2f2f2),
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 8,
+                                color: Colors.grey.withOpacity(0.3),
+                                spreadRadius: 1,
+                                offset: Offset(1, 4),
+                              )
+                            ],
+                          ),
+                          width: 140,
+                          child: Column(
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Container(
+                                      height: 65,
+                                      width: 80,
+                                      child: Image(
+                                        image: AssetImage(
+                                            homeController.items[index][1]),
+                                      )),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    homeController.items[index][0],
+                                    style: TextStyle(fontSize: 14, height: 1.2),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
