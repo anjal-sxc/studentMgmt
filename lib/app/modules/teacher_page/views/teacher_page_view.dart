@@ -49,33 +49,23 @@ class TeacherPageView extends GetView<TeacherPageController> {
             ),
             Expanded(
               child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius:
-                        BorderRadius.only(topRight: Radius.circular(100))),
-                padding: EdgeInsets.all(20),
-                child: FutureBuilder(
-                  // future: activities,
-                  builder: (context, snapshots) {
-                    if (!snapshots.hasData || snapshots.data.length == 0) {
-                      return Center(
-                          child: Text('No Teachers Right now',
-                              style: GoogleFonts.antic(
-                                  fontWeight: FontWeight.bold, fontSize: 30)));
-                    }
-                    return ListView.builder(
-                      itemCount: teacherPageController.teachers.length,
-                      itemBuilder: (context, index) {
-                        return ActivityTile(
-                          name: teacherPageController.teachers[index][0],
-                          explanation: snapshots.data[index]['explanation'],
-                        );
-                      },
-                    );
-                  },
-                ),
-              ),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius:
+                          BorderRadius.only(topRight: Radius.circular(100))),
+                  padding: EdgeInsets.all(20),
+                  child: ListView.builder(
+                    itemCount: teacherPageController.teachers.length,
+                    itemBuilder: (context, index) {
+                      return ActivityTile(
+                        from: "1",
+                        name: teacherPageController.teachers[index][0],
+                        explanation: teacherPageController.teachers[index][1],
+                        subject: teacherPageController.teachers[index][2],
+                      );
+                    },
+                  )),
             ),
           ],
         ),

@@ -1,11 +1,9 @@
 import 'package:get/get.dart';
 
 class FeedbackPageController extends GetxController {
-  //TODO: Implement FeedbackPageController
   List items = [
-    ["a","b","B","c"],
-    ["v","C","S","A"]
-
+    ["BIM", "Good Student", "Ram Maharjan", "13th march"],
+    ["BSW", "Good Student", "Ram Maharjan", "23rd april"],
   ];
 
   final count = 0.obs;

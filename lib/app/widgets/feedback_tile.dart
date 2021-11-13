@@ -17,9 +17,12 @@ class FeedbackTile extends StatelessWidget {
     return Column(
       children: <Widget>[
         ListTile(
-          leading: Icon(
-            Icons.warning,
-            color: Colors.red,
+          leading: Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Icon(
+              Icons.person,
+              color: Colors.red,
+            ),
           ),
           title: Text(subject),
           subtitle: Text(dateOfFeedback),
